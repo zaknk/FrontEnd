@@ -1,0 +1,27 @@
+nav {
+  background-color: rgb(61, 61, 61);
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-top: 14px;
+}
+
+a {
+  text-decoration: none;
+  padding: .5em 1em;
+  display: inline-block;
+  color: rgb(139, 148, 158);
+
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(88, 166, 255);
+}
+
+div  {
+  display: block;
+  width: 200px;
+  font-size: 12px;
+  float: right;
+  text-transform: capitalize;
+}
