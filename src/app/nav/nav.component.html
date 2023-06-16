@@ -2,10 +2,10 @@
   <div *ngIf="userService.user | async as user; else noUser">
     <!-- <app-login *ngIf="(userServ.user | async) == null"></app-login> -->
     <a routerLink="/dashboard">My Dashboard</a>
-    <a routerLink="ExampleLinkedComponent1">link 1</a>
-    <a routerLink="ExampleLinkedComponent2">link 2</a>
+    <a routerLink="/warehouse">Warehouses</a>
+    <a routerLink="/inventory">Inventories</a>
   </div>
-  <ng-template #noUser> <p></p><p></p><p></p></ng-template>
+  <ng-template #noUser><p></p></ng-template>
 
 <div>
   <app-login class="login-container"></app-login>

@@ -16,16 +16,16 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-      path: 'inventory',
-      component: InventoryComponent
+    path: 'inventory',
+    component: InventoryComponent
+  },
+  {
+    path: 'warehouse',
+    component: WarehouseComponent
   },
   {
     path: '**',
     component: DashboardComponent
-  },
-  {
-    path: 'Warehouse',
-    component: WarehouseComponent
   }
 ];
 
