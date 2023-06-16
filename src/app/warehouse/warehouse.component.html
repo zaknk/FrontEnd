@@ -1,1 +1,62 @@
-<p>warehouse works!</p>
+<main>
+    <h1>View All Warehouses</h1>
+
+    <form *ngIf="!chosenWarehouse.warehouseId">
+
+        <h2>Add New Warehouse</h2>
+
+        <label for="capacity">Warehouse Capacity</label>
+        <input type="number" id="capacity" name="formCapacity" [(ngModel)]="formCapacity" min="0">
+
+        <label for="active">Warehouse Active</label>
+        <input type="number" id="active" name="formActive" [(ngModel)]="formActive" min="0">
+
+        <button (click)="addNewWarehouse()">ADD</button>
+
+    </form>
+
+    <form *ngIf="chosenWarehouse.warehouseId">
+
+        <h2>Update Warehouse - Warehouse ID: {{ chosenWarehouse.warehouseId }}</h2>
+
+        <label for="capacity">Warehouse Capacity</label>
+        <input type="number" id="capacity" name="formCapacity" [(ngModel)]="formCapacity" min="0">
+
+        <label for="active">Warehouse Active</label>
+        <input type="number" id="active" name="formActive" [(ngModel)]="formActive" min="0">
+
+        <button (click)="updateWarehouse()">UPDATE</button>
+        <button (click)="deleteWarehouse()" [disabled]="!canDelete">DELETE</button>
+        <button (click)="clearForm()">CLEAR FORM</button>
+
+
+    </form>
+
+    <h3 *ngIf="!localWarehouses.length" style="color: red;">No warehouses in the database!</h3>
+
+    <table *ngIf="localWarehouses.length">
+
+        <thead>
+            <tr>
+                <th>Warehouse ID</th>
+                <th>Capacity</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <ng-container *ngFor="let warehouse of localWarehouses; let i = index;">
+                <tr [ngClass]="{
+                    'oddRow': i % 2 === 1,
+                    'evenRow': i % 2 === 0
+                }" (click)="chooseWarehouse(warehouse)">
+                    <td>{{ warehouse.warehouseId }}</td>
+                    <td>{{ warehouse.capacity }}</td>
+                    <td>{{ warehouse.active }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+
+    </table>
+
+</main>

@@ -15,8 +15,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { WarehouseComponent } from './warehouse/warehouse.component';
+import { InventoryComponent } from './inventory/inventory.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     NavComponent,
     WarehouseComponent,
+    InventoryComponent,
     ProductComponent,
     LoginComponent
   ],
