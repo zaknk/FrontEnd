@@ -79,3 +79,8 @@ form button {
   font-weight: bold;
   margin-right: 10px;
 }
+
+select {
+  min-width: 350px;
+  background-color: rgb(223, 223, 223);
+}

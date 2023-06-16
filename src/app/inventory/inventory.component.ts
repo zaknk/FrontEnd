@@ -44,9 +44,7 @@ export class InventoryComponent {
   );
 
   chosenProduct?: Product;
-
   displayProductDetails: boolean = false;
-
 
   constructor(private backendService: BackendService, private fb: FormBuilder) {
     this.getAllWarehouses();
