@@ -1,20 +1,95 @@
 <main>
     <h1>View All Inventory</h1>
-
+    
     <form [formGroup]= "addForm">
         <h2 *ngIf="!chosenInventory">Add to Inventory</h2>
         <h2 *ngIf="chosenInventory">Update Album — Album Id: {{ chosenInventory }}</h2>
 
         <label for="warehouseId"></label>
         <select type="number" id="warehouseId" formControlName="warehouseId">
-                <option value="">Select a warehouse...</option>
-            <ng-container *ngFor="let inventory of localInventory">
-                <option [value]="inventory.inventoryId">{{inventory.invetoryId}}</option>
+                <option value="">Select A warehouse...</option>
+            <ng-container *ngFor="let warehouse of localWarehouses">
+                <option [value]="warehouse.warehouseId">{{warehouse.warehouseId}}</option>
             </ng-container>
         </select>
+
+        <label for="categoryId"></label>
+        <select type="number" id="categoryId" formControlName="categoryId">
+                <option value="">Select a category...</option>
+            <ng-container *ngFor="let category of localCategories">
+                <option [value]="category.categoryId">{{category.categoryName}}</option>
+            </ng-container>
+        </select>
+
+        <label for="productId"></label>
+        <select type="number" id="productId" formControlName="name">
+                <option value="">Select a product...</option>
+            <ng-container *ngFor="let product of localProducts">
+                <option [value]="product.productId">{{product.name}}</option>
+            </ng-container>
+        </select>
+
+        <label for="caliberId"></label>
+        <select type="number" id="caliberId" formControlName="caliberName">
+                <option value="">Select a caliber...</option>
+            <ng-container *ngFor="let caliber of localCalibers">
+                <option [value]="caliber.caliberId">{{caliber.caliberName}}</option>
+            </ng-container>
+        </select>
+
+        <label for="manufacturerId"></label>
+        <select type="number" id="manufacturerId" formControlName="manufacturerName">
+                <option value="">Select a manufacturer...</option>
+            <ng-container *ngFor="let manufacturer of localManufacturers">
+                <option [value]="manufacturer.manufacturerId">{{manufacturer.manufacturerName}}</option>
+            </ng-container>
+        </select>
+
+        <label for="sizeId"></label>
+        <select type="number" id="sizerId" formControlName="sizeName">
+                <option value="">Select a size...</option>
+            <ng-container *ngFor="let size of localSizes">
+                <option [value]="size.sizeId">{{size.sizeName}}</option>
+            </ng-container>
+        </select>
+
     </form>
 
-    <ng-container *ngFor="let inventory of localInventory">
-        
-    </ng-container>
+    <h3 *ngIf="!localInventory.length" style="color: red;">No inventory in the database!</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Manufacturer</th>
+                <th>Size</th>
+                <th>Caliber</th>
+                <th>Product Description</th>
+                <th>Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let inventory of localInventory; let i = index;">
+                <tr [ngClass]="{
+                    'oddRow': i % 2 === 1,
+                    'evenRow': i % 2 === 0
+                }" (click)="chooseInventory(inventory)">
+                    <td (click)="chooseProduct(inventory.productId)">{{ inventory.productId.productId }}</td>
+                    <td (click)="chooseProduct(inventory.productId)">{{ inventory.productId.name }}</td>
+                    <td>{{ inventory.productId.categoryId.categoryId }}</td>
+                    <td>{{ inventory.productId.manufacturerId.manufacturerId }}</td>
+                    <td>{{ inventory.productId.sizeId.sizeId }}</td>
+                    <td>{{ inventory.productId.caliberId.caliberId }}</td>
+                    <td>{{ inventory.productId.productDesc }}</td>
+                    <td>{{ inventory.quantity }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+
+    </table>
+
 </main>

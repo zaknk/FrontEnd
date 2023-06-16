@@ -43,9 +43,16 @@ export class InventoryComponent {
     0
   );
 
+  chosenProduct?: Product;
+
   constructor(private backendService: BackendService, private fb: FormBuilder) {
     this.getAllWarehouses();
     this.getAllInventory();
+    this.getAllCalibers();
+    this.getAllCategories();
+    this.getAllManufacturers();
+    this.getAllProducts();
+    this.getAllSizes();
   }
 
   addForm = this.fb.group({
@@ -55,6 +62,11 @@ export class InventoryComponent {
       '',
       Validators.compose([Validators.required, Validators.min(1)]),
     ],
+    categoryName: ['', Validators.required],
+    name: ['', Validators.required],
+    caliberName: ['', Validators.required],
+    manufacturerName: ['', Validators.required],
+    sizeName: ['', Validators.required]
   });
 
   get warehouseId() {
@@ -72,36 +84,12 @@ export class InventoryComponent {
   getAllInventory(): void {
     this.localInventory = [];
     this.backendService.getAllInventory().subscribe((data) => {
-      for (let inventory of data.body) {
+      console.log(data.body)
+      for (let i of data.body) {
         this.localInventory.push(
           new Inventory(
-            inventory.inventoryId,
-            new Warehouse(
-              inventory.warehouse.warehouseId,
-              inventory.warehouse.capacity,
-              inventory.warehouse.active),
-            new Product(
-              inventory.product.productId,
-              inventory.product.name,
-              new Category(
-                inventory.product.category.categoryId,
-                inventory.product.caliber.caliberName),
-              new Manufacturer(
-                inventory.product.manufacturer.manufacturerId,
-                inventory.product.manufacturer.manufacturerName),
-              new Size(
-                inventory.product.size.sizeId,
-                inventory.product.size.sizeName),
-              new Caliber(
-                inventory.product.caliber.caliberId,
-                inventory.product.caliber.caliberName),
-              inventory.product.productDesc,
-              inventory.product.available,
-              inventory.product.imageURL,
-              inventory.product.altText),
-            inventory.quantity
-          )
-        );
+            i.inventoryId,
+            new Warehouse(i.warehouseId.warehouseId, i.warehouseId.capacity, i.warehouseId.active), new Product(i.productId.productId, i.productId.name, new Category(i.productId.categoryId.categoryId, i.productId.categoryId.categoryName), new Manufacturer(i.productId.manufacturerId.manufacturerId, i.productId.manufacturerId.manufacturerName), new Size(i.productId.sizeId.sizeId, i.productId.sizeId.sizeName), new Caliber(i.productId.caliberId.caliberId, i.productId.caliberId.caliberName), i.productId.productDesc, i.productId.available, i.productId.imageURL, i.productId.altText), i.quantity));
       }
     });
   }
@@ -126,6 +114,29 @@ export class InventoryComponent {
       complete: () => console.log('Complete! All warehouses returned.'),
     });
   }
+
+  getWarehouseById(): void {
+    this.localWarehouses = [];
+    this.backendService.getWarehouseById().subscribe({
+      next: (data) => {
+        for (let warehouse of data.body) {
+          this.localWarehouses.push(
+            new Warehouse(
+              warehouse.warehouseId,
+              warehouse.capacity,
+              warehouse.active
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All warehouses returned.'),
+    });
+  }
+
+
 
   getAllCalibers(): void {
     this.localCalibers = [];
@@ -169,10 +180,10 @@ export class InventoryComponent {
 
   getAllManufacturers(): void {
     this.localManufacturers = [];
-    this.backendService.getAllManufactures().subscribe({
+    this.backendService.getAllManufacturers().subscribe({
       next: (data) => {
         for (let manufacturer of data.body) {
-          this.localWarehouses.push(
+          this.localManufacturers.push(
             new Manufacturer(
               manufacturer.manufacturerId,
               manufacturer.manufacturerName
@@ -247,12 +258,11 @@ export class InventoryComponent {
 
   chooseInventory(inventory: Inventory) :void {
     this.chosenInventory = inventory;
+  }
 
-    this.addForm.setValue({
-      warehouseId: String(inventory.warehouseId),
-      productId: String(inventory.productId),
-      quantity: String(inventory.quantity)
-    })
+
+  chooseProduct(product: Product) :void {     
+    this.chosenProduct = product;  
   }
 
   cancelUpdate(): void {

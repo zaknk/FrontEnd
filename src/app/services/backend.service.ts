@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-// must import HTTP functionality here in the service
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, subscribeOn } from 'rxjs';
-// importing the environment object for use here
 import { environment } from 'src/environments/environment';
 import { Warehouse } from '../models/warehouse';
 import { Inventory } from '../models/inventory';
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +55,24 @@ export class BackendService {
     return this.http.post<any>(this.url + 'warehouse/new', warehouse, { observe: 'response' });
   }
 
-
+  getAllSizes(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'p/sizes/all',
+                              { observe: 'response' });
+  }
+  getAllProducts(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'p/all',
+                              { observe: 'response' });
+  }
+  getAllManufacturers(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'p/manus/all',
+                              { observe: 'response' });
+  }
+  getAllCategories(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'p/cats/all',
+                              { observe: 'response' });
+  }
+  getAllCalibers(): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'p/cals/all',
+                              { observe: 'response' });
+  }
 }
