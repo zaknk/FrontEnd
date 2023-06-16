@@ -1,6 +1,35 @@
-<header>
+<!-- <header>
   <div *ngIf="user; else noUser">Welcome back, {{ user.name }}</div>
   <ng-template #noUser><div> </div></ng-template>
-    Warehouse Management
+  <span class="logo-container">
+    <img src="assets/logo.png" alt="Company Logo">
+    <h1>LandLush Co</h1>
+  </span>
+  <div>
     <app-nav></app-nav>
+  </div>
+</header> -->
+<!-- <header>
+  <div *ngIf="user; else noUser">Welcome back, {{ user.name }}</div>
+  <ng-template #noUser><div> </div></ng-template>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Company Logo">
+    <h1>LandLush Co</h1>
+  </div>
+  <div>
+    <app-nav></app-nav>
+  </div>
+</header> -->
+<header>
+  <div class="header-top">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Company Logo">
+      <h1>LandLush Co</h1>
+    </div>
+    <div *ngIf="user; else noUser" class="user-greeting">Welcome back, {{ user.name }}</div>
+    <ng-template #noUser><div> </div></ng-template>
+  </div>
+  <div class="nav-container">
+    <app-nav></app-nav>
+  </div>
 </header>

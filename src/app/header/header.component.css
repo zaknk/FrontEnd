@@ -1,4 +1,4 @@
-header {
+/* header {
   display: block;
   font-size: 30px;
   text-align: center;
@@ -13,4 +13,81 @@ div {
   float: right;
   text-transform: capitalize;
   margin: 1em;
+}
+
+img {
+  display: block;
+  max-width: 50px;
+  float: left;
+} */
+
+/* header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  display: block;
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+} */
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  display: block;
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-greeting {
+  align-self: flex-end;
+  font-size: 12px;
+  margin: 1em;
+}
+
+.nav-container {
+  width: 100%;
 }

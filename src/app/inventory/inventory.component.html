@@ -1,8 +1,9 @@
+<!-- <main *ngIf="userService.user | async as user; else noUser"> -->
 <main>
 
-  <h1>View All Inventory</h1>
+  <h1>View inventories</h1>
 
-  <div class="overlay" *ngIf="displayProductDetails" (click)="closeLogin()">
+  <div class="overlay" *ngIf="displayProductDetails" (click)="closeProductDetails()">
     <div class="login-box" (click)="$event.stopPropagation()">
       <app-product [product]="chosenProduct"></app-product>
     </div>
@@ -102,3 +103,4 @@
 </table>
 
 </main>
+<!-- <ng-template #noUser><span class="no-user">Access denied. Please log in.</span></ng-template> -->

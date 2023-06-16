@@ -1,5 +1,7 @@
 <app-header></app-header>
 
-<router-outlet></router-outlet>
+<router-outlet  *ngIf="userService.user | async as user; else noUser"></router-outlet>
+
+<ng-template #noUser><span class="no-user">Access denied. Please log in.</span></ng-template>
 
 <app-footer></app-footer>

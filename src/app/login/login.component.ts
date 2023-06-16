@@ -15,7 +15,7 @@ export class LoginComponent {
 
   user = new User(0, '', '', '', new PermissionLevel(0, ''));
   public isLoggedIn: boolean = false;
-  displayLogin = false;
+  displayLogin = true;
   errorMessage = '';
 
   url = environment.backendURL;
@@ -23,8 +23,7 @@ export class LoginComponent {
   constructor(public userService: UserService,
     private router: Router) {
       this.userService.user.subscribe(user => {
-        this.isLoggedIn = true;
-       // this.isLoggedIn = !!user;
+        this.isLoggedIn = !!user;
       });
   }
 
