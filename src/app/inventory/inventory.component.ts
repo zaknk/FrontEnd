@@ -18,11 +18,13 @@ import { Category } from '../models/category';
 export class InventoryComponent {
   localWarehouses: any = [];
   localInventory: any = [];
+
   localCalibers:any = [];
   localCategories:any = [];
   localManufacturers:any = [];
   localProducts:any= [];
   localSizes:any= [];
+
 
   chosenInventory = new Inventory(
     0,

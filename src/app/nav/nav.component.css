@@ -29,3 +29,10 @@ div  {
 .login-container {
   margin-right: 1em;
 }
+
+p {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-transform: capitalize;
+}

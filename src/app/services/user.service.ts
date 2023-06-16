@@ -15,7 +15,7 @@ export class UserService {
   private loginUrl = `${this.url}users/login`;
   private rawUser = new BehaviorSubject<User | null>(null);
 
-  user = this.rawUser.asObservable();
+  public user = this.rawUser.asObservable();
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
 })
 export class NavComponent {
 
-  constructor(public userServ: UserService) {
+  constructor(public userService: UserService) {
 
   }
 }
