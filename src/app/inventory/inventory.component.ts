@@ -117,29 +117,6 @@ export class InventoryComponent {
     });
   }
 
-  getWarehouseById(): void {
-    this.localWarehouses = [];
-    this.backendService.getWarehouseById().subscribe({
-      next: (data) => {
-        for (let warehouse of data.body) {
-          this.localWarehouses.push(
-            new Warehouse(
-              warehouse.warehouseId,
-              warehouse.capacity,
-              warehouse.active
-            )
-          );
-        }
-      },
-      error: (errData) => {
-        console.log(errData);
-      },
-      complete: () => console.log('Complete! All warehouses returned.'),
-    });
-  }
-
-
-
   getAllCalibers(): void {
     this.localCalibers = [];
     this.backendService.getAllCalibers().subscribe({
@@ -262,10 +239,7 @@ export class InventoryComponent {
     this.chosenInventory = inventory;
   }
 
-  chooseProduct(product: Product) :void {     
-    this.chosenProduct = product;  
-
-  chooseProduct(product: Product) :void {
+  chooseProduct(product: Product): void {
     this.chosenProduct = product;
     this.displayProductDetails = true;
   }
