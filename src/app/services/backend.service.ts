@@ -6,6 +6,10 @@ import { Warehouse } from '../models/warehouse';
 import { Inventory } from '../models/inventory';
 import { Product } from '../models/product';
 
+
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -60,14 +64,17 @@ export class BackendService {
     return this.http.get<any>(this.url + 'p/all',
                               { observe: 'response' });
   }
+
   getAllManufactures(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.url + 'p/manus/all',
                               { observe: 'response' });
   }
+  
   getAllCategories(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.url + 'p/cats/all',
                               { observe: 'response' });
   }
+  
   getAllCalibers(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.url + 'p/cals/all',
                               { observe: 'response' });

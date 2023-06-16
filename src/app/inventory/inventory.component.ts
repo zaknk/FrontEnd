@@ -44,7 +44,9 @@ export class InventoryComponent {
   );
 
   chosenProduct?: Product;
+
   displayProductDetails: boolean = false;
+
 
   constructor(private backendService: BackendService, private fb: FormBuilder) {
     this.getAllWarehouses();
@@ -115,6 +117,29 @@ export class InventoryComponent {
     });
   }
 
+  getWarehouseById(): void {
+    this.localWarehouses = [];
+    this.backendService.getWarehouseById().subscribe({
+      next: (data) => {
+        for (let warehouse of data.body) {
+          this.localWarehouses.push(
+            new Warehouse(
+              warehouse.warehouseId,
+              warehouse.capacity,
+              warehouse.active
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All warehouses returned.'),
+    });
+  }
+
+
+
   getAllCalibers(): void {
     this.localCalibers = [];
     this.backendService.getAllCalibers().subscribe({
@@ -157,7 +182,7 @@ export class InventoryComponent {
 
   getAllManufacturers(): void {
     this.localManufacturers = [];
-    this.backendService.getAllManufactures().subscribe({
+    this.backendService.getAllManufacturers().subscribe({
       next: (data) => {
         for (let manufacturer of data.body) {
           this.localManufacturers.push(
@@ -236,6 +261,9 @@ export class InventoryComponent {
   chooseInventory(inventory: Inventory) :void {
     this.chosenInventory = inventory;
   }
+
+  chooseProduct(product: Product) :void {     
+    this.chosenProduct = product;  
 
   chooseProduct(product: Product) :void {
     this.chosenProduct = product;
