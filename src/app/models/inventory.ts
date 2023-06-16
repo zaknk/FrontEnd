@@ -24,10 +24,12 @@ export class Inventory {
 
   constructor(
     inventoryId: number,
+    warehouseId: Warehouse,
     categoryName: string,
     productId: Product,
     quantity: number) {
     this.inventoryId = inventoryId;
+    this.warehouseId = warehouseId;
     this.categoryName = categoryName;
     this.productId = productId;
     this.quantity = quantity;
