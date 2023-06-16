@@ -24,7 +24,7 @@ export class LoginComponent {
     private router: Router) {
       this.userService.user.subscribe(user => {
         this.isLoggedIn = true;
-       // this.isLoggedIn = !!user; // User is logged in if user is not null
+       // this.isLoggedIn = !!user;
       });
   }
 

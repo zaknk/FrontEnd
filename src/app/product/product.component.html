@@ -1,10 +1,23 @@
-product.component.html >
 <article *ngIf="product">
   <img [src]="product.imageURL" [alt]="product.altText">
 
   <h2>{{ product.name }}</h2>
+
   <ul>
     <ng-container *ngFor="let prop in product"><li>product[prop]</li></ng-container>
   </ul>
 
 </article>
+
+  <h3>{{ product.manufacturerId.manufacturerName }}</h3>
+  <ul>
+    <li>{{ product.sizeId.sizeName }}</li>
+    <li>{{ product.caliberId.caliberName }}</li>
+    <!-- <li></li> -->
+  </ul>
+
+  <h6>Description: </h6>
+  <p>{{ product.productDesc }}</p>
+
+</article>
+

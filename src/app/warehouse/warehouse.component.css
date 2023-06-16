@@ -11,19 +11,19 @@ th, td {
     padding: 6px 50px 6px 6px;
 }
 
-/* for use with our ngClass dynamic row coloring */
 .oddRow {
-    background-color: lightgray;
+  background-color: rgb(13, 17, 23);
 }
 
 .evenRow {
-    background-color: darkgray;
+  background-color: rgb(61, 61, 61);
 }
 
 form {
     padding: 20px;
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(61, 61, 61);
     border-radius: 6px;
+    display: inline-block;
 }
 
 h2 {
@@ -53,3 +53,4 @@ button {
     font-weight: bold;
 
 }
+

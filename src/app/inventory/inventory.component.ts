@@ -45,6 +45,9 @@ export class InventoryComponent {
 
   chosenProduct?: Product;
 
+  displayProductDetails: boolean = false;
+
+
   constructor(private backendService: BackendService, private fb: FormBuilder) {
     this.getAllWarehouses();
     this.getAllInventory();
@@ -84,7 +87,6 @@ export class InventoryComponent {
   getAllInventory(): void {
     this.localInventory = [];
     this.backendService.getAllInventory().subscribe((data) => {
-      console.log(data.body)
       for (let i of data.body) {
         this.localInventory.push(
           new Inventory(
@@ -260,9 +262,12 @@ export class InventoryComponent {
     this.chosenInventory = inventory;
   }
 
-
   chooseProduct(product: Product) :void {     
     this.chosenProduct = product;  
+
+  chooseProduct(product: Product) :void {
+    this.chosenProduct = product;
+    this.displayProductDetails = true;
   }
 
   cancelUpdate(): void {
@@ -283,5 +288,9 @@ export class InventoryComponent {
           ''),
         0
       );
+  }
+
+  closeLogin(): void {
+    this.displayProductDetails = false;
   }
 }
