@@ -27,6 +27,7 @@ h2 {
 }
 
 .error {
+  padding: 1em 0em 0em 0em;
   color: red;
   text-transform: none;
 }
