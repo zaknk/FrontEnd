@@ -1,4 +1,6 @@
 <header>
-  Warehouse Management
-  <app-nav></app-nav>
+  <div *ngIf="user; else noUser">Welcome back, {{ user.name }}</div>
+  <ng-template #noUser><div>Please Login, Guest</div></ng-template>
+    Warehouse Management
+    <app-nav></app-nav>
 </header>

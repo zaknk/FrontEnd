@@ -2,15 +2,16 @@ nav {
   background-color: rgb(61, 61, 61);
   font-size: 18px;
   text-transform: capitalize;
-  margin-top: 14px;
+  padding: .25em;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 a {
   text-decoration: none;
   padding: .5em 1em;
-  display: inline-block;
-  color: rgb(139, 148, 158);
-
+  color: rgb(201, 209, 217);
 }
 
 a:hover {
@@ -19,9 +20,12 @@ a:hover {
 }
 
 div  {
-  display: block;
-  width: 200px;
+  display: flex;
+  align-items: center;
   font-size: 12px;
-  float: right;
   text-transform: capitalize;
+}
+
+.login-container {
+  margin-right: 1em;
 }
