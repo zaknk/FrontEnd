@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
   },
   {
     path: '**',

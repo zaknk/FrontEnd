@@ -1,0 +1,38 @@
+<main>
+
+  <h1>View Products</h1>
+  <div class="overlay" *ngIf="displayProductDetails" (click)="closeProductDetails()">
+    <div class="login-box" (click)="$event.stopPropagation()">
+      <app-product [product]="chosenProduct"></app-product>
+    </div>
+  </div>
+  <table>
+
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Manufacturer</th>
+            <th>Size</th>
+            <th>Caliber</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let product of localProducts; let i = index;">
+            <tr [ngClass]="{
+                'oddRow': i % 2 === 1,
+                'evenRow': i % 2 === 0
+            }" (click)="chooseProduct(product)">
+                <td class="hover-cell" (click)="chooseProduct(product)">{{ product.productId }}</td>
+                <td class="hover-cell" (click)="chooseProduct(product)">{{ product.name }}</td>
+                <td>{{ product.categoryId.categoryId }}</td>
+                <td>{{ product.manufacturerId.manufacturerId }}</td>
+                <td>{{ product.sizeId.sizeName }}</td>
+                <td>{{ product.caliberId.caliberName }}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+
+  </table>
+</main>

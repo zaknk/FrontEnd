@@ -18,6 +18,7 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     WarehouseComponent,
     InventoryComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
