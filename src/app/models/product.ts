@@ -26,15 +26,15 @@ export class Product {
     available: number,
     imageURL: string,
     altText: string) {
-    this.productId = productId;
-    this.name = name;
-    this.categoryId = categoryId;
-    this.manufacturerId = manufacturerId;
-    this.sizeId = sizeId;
-    this.caliberId = caliberId;
-    this.productDesc = productDesc;
-    this.available = available;
-    this.imageURL = imageURL;
-    this.altText = altText;
+      this.productId = productId;
+      this.name = name;
+      this.categoryId = categoryId;
+      this.manufacturerId = manufacturerId;
+      this.sizeId = sizeId;
+      this.caliberId = caliberId;
+      this.productDesc = productDesc;
+      this.available = available;
+      this.imageURL = imageURL;
+      this.altText = altText;
   }
 }
