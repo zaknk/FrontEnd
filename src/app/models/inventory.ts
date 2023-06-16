@@ -8,7 +8,6 @@ import { Warehouse } from './warehouse';
 export class Inventory {
   inventoryId: number = 0;
   warehouseId: Warehouse = new Warehouse(0, 0, 0);
-  categoryName: string = '';
   productId: Product = new Product(
     0,
     '',
@@ -25,12 +24,10 @@ export class Inventory {
   constructor(
     inventoryId: number,
     warehouseId: Warehouse,
-    categoryName: string,
     productId: Product,
     quantity: number) {
     this.inventoryId = inventoryId;
     this.warehouseId = warehouseId;
-    this.categoryName = categoryName;
     this.productId = productId;
     this.quantity = quantity;
   }

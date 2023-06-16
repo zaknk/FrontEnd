@@ -27,7 +27,7 @@ export class BackendService {
   }
 
   deleteWarehouseById(warehouse: Warehouse): Observable<HttpResponse<any>> {
-    return this.http.delete<any>(`${this.url}warehouse/del/${warehouse.warehouseId}`, 
+    return this.http.delete<any>(`${this.url}warehouse/del/${warehouse.warehouseId}`,
                                  { observe: 'response' });
   }
 
@@ -35,9 +35,14 @@ export class BackendService {
     return this.http.put<any>(this.url + 'warehouse/upd', warehouse, { observe: 'response' });
   }
 
-  getAllInventory(): Observable<any> {
+  getAllInventory(): Observable<HttpResponse<any>> {
     return this.http.get<any>(this.url + 'inv/all',
                               { observe: 'response' });
+  }
+
+  deleteInventoryById(inventory: Inventory): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`${this.url}warehouse/del/${inventory.inventoryId}`,
+                                 { observe: 'response' });
   }
 
   addNewWarehouse(warehouse: Warehouse): Observable<HttpResponse<any>> {
