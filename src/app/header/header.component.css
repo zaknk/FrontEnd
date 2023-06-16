@@ -1,7 +1,16 @@
 header {
+  display: block;
   font-size: 30px;
   text-align: center;
   text-transform: uppercase;
-  padding-top: .5em;
   font-weight: bold;
+}
+
+div {
+  display: block;
+  width: 200px;
+  font-size: 12px;
+  float: right;
+  text-transform: capitalize;
+  margin: 1em;
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  constructor(public userService: UserService) {
+
+  }
 }

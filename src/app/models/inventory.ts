@@ -27,9 +27,9 @@ export class Inventory {
     categoryName: string,
     productId: Product,
     quantity: number) {
-    this.inventoryId = inventoryId;
-    this.categoryName = categoryName;
-    this.productId = productId;
-    this.quantity = quantity;
+      this.inventoryId = inventoryId;
+      this.categoryName = categoryName;
+      this.productId = productId;
+      this.quantity = quantity;
   }
 }

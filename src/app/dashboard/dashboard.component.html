@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<main>
+  <div>
+    My User Data:
+    <div *ngIf="userService.user | async as user">
+      Hello, {{user.userId}}
+    </div>
+
+  </div>
+</main>
