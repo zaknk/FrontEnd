@@ -1,15 +1,12 @@
 <article *ngIf="product">
   <img [src]="product.imageURL" [alt]="product.altText">
 
-  <h2>{{ product.name }}</h2>
+  <ng-container *ngFor="let s of splitStringName()"><h2>{{ s }}</h2></ng-container>
 
-  <ul>
-    <ng-container *ngFor="let prop in product"><li>product[prop]</li></ng-container>
-  </ul>
 
   <h3>{{ product.manufacturerId.manufacturerName }}</h3>
   <ul>
-    <li>{{ product.sizeId.sizeName }}</li>
+    <li *ngIf="product.sizeId.sizeId">{{ product.sizeId.sizeName }}</li>
     <li>{{ product.caliberId.caliberName }}</li>
     <!-- <li></li> -->
   </ul>

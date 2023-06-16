@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../services/backend.service';
 import { Warehouse } from '../models/warehouse';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-warehouse',
@@ -8,7 +9,7 @@ import { Warehouse } from '../models/warehouse';
   styleUrls: ['./warehouse.component.css']
 })
 export class WarehouseComponent {
-  
+
   localWarehouses: any = [];
 
   chosenWarehouse: Warehouse = new Warehouse(0,0,0);
@@ -17,14 +18,14 @@ export class WarehouseComponent {
 
   canDelete: boolean = false;
 
-  constructor(private backendService: BackendService,) {
+  constructor(private backendService: BackendService, public userService: UserService) {
     this.getAllWarehouses();
   }
 
   getAllWarehouses(): void {
     this.localWarehouses = [];
     this.backendService.getAllWarehouses().subscribe(
-      {  
+      {
         next: data => {
           for (let warehouse of data.body) {
             this.localWarehouses.push(new Warehouse(warehouse.warehouseId,
@@ -34,8 +35,7 @@ export class WarehouseComponent {
         },
         error: errData => {
           console.log(errData)
-        },
-        complete: () => console.log('Complete! All warehouses returned.')
+        }
       }
     );
   }
@@ -48,7 +48,7 @@ export class WarehouseComponent {
   }
 
   deleteWarehouse(): void {
-    
+
     console.log(this.chosenWarehouse);
 
     this.backendService.deleteWarehouseById(this.chosenWarehouse)
@@ -64,7 +64,7 @@ export class WarehouseComponent {
   }
 
   updateWarehouse(): void {
-    this.backendService.updateWarehouse(new Warehouse(this.chosenWarehouse.warehouseId, 
+    this.backendService.updateWarehouse(new Warehouse(this.chosenWarehouse.warehouseId,
                                                 this.formCapacity,
                                                 Number(this.formActive)))
                        .subscribe(() => this.getAllWarehouses());

@@ -21,7 +21,8 @@
 
 
 
-<button style="background-color: rgb(88, 166, 255); min-width: 73px; color: white" mat-raised-button *ngIf="!isLoggedIn" (click)="openLogin()">Login</button>
+<button style="background-color: rgb(88, 166, 255); min-width: 73px; color: white" mat-raised-button *ngIf="false" (click)="openLogin()">Login</button>
+<!-- <button style="background-color: rgb(88, 166, 255); min-width: 73px; color: white" mat-raised-button *ngIf="!isLoggedIn" (click)="openLogin()">Login</button> -->
 
 <button style="background-color: rgb(255, 88, 96); min-width: 73px; color: white" mat-raised-button color="warn" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
 

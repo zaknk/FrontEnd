@@ -10,6 +10,9 @@ export class ProductComponent {
 
   @Input() product?: Product;
 
+  splitStringName() {
+    return this.product?.name.split(', ');
+  }
 
 
 }

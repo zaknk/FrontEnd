@@ -9,6 +9,7 @@ import { Caliber } from '../models/caliber';
 import { Manufacturer } from '../models/manufacturer';
 import { Size } from '../models/size';
 import { Category } from '../models/category';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-inventory',
@@ -46,7 +47,7 @@ export class InventoryComponent {
   chosenProduct?: Product;
   displayProductDetails: boolean = false;
 
-  constructor(private backendService: BackendService, private fb: FormBuilder) {
+  constructor(private backendService: BackendService, private fb: FormBuilder, public userService: UserService) {
     this.getAllWarehouses();
     this.getAllInventory();
     this.getAllCalibers();
@@ -110,8 +111,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All warehouses returned.'),
+      }
     });
   }
 
@@ -130,8 +130,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All Calibers returned.'),
+      }
     });
   }
 
@@ -150,8 +149,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All categories returned.'),
+      }
     });
   }
 
@@ -170,8 +168,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All manufactures returned.'),
+      }
     });
   }
 
@@ -198,8 +195,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All products returned.'),
+      }
     });
   }
 
@@ -218,8 +214,7 @@ export class InventoryComponent {
       },
       error: (errData) => {
         console.log(errData);
-      },
-      complete: () => console.log('Complete! All sizes returned.'),
+      }
     });
   }
 
@@ -262,7 +257,7 @@ export class InventoryComponent {
       );
   }
 
-  closeLogin(): void {
+  closeProductDetails(): void {
     this.displayProductDetails = false;
   }
 }
