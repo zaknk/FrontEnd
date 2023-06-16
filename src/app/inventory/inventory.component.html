@@ -1,5 +1,20 @@
-inv comp
+<main>
+    <h1>View All Inventory</h1>
 
-<!-- <ng-container >
+    <form [formGroup]= "addForm">
+        <h2 *ngIf="!chosenInventory">Add to Inventory</h2>
+        <h2 *ngIf="chosenInventory">Update Album — Album Id: {{ chosenInventory }}</h2>
 
-</ng-container> -->
+        <label for="warehouseId"></label>
+        <select type="number" id="warehouseId" formControlName="warehouseId">
+                <option value="">Select a warehouse...</option>
+            <ng-container *ngFor="let inventory of localInventory">
+                <option [value]="inventory.inventoryId">{{inventory.invetoryId}}</option>
+            </ng-container>
+        </select>
+    </form>
+
+    <ng-container *ngFor="let inventory of localInventory">
+        
+    </ng-container>
+</main>

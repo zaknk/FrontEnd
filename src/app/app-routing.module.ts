@@ -4,6 +4,7 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,16 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
+      path: 'inventory',
+      component: InventoryComponent
+  },
+  {
     path: '**',
     component: DashboardComponent
+  },
+  {
+    path: 'Warehouse',
+    component: WarehouseComponent
   }
 ];
 

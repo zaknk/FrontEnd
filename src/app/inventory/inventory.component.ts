@@ -18,7 +18,13 @@ import { Category } from '../models/category';
 export class InventoryComponent {
   localWarehouses: any = [];
   localInventory: any = [];
-  // chosenWarehouse: Warehouse =
+
+  localCalibers:any = [];
+  localCategories:any = [];
+  localManufacturers:any = [];
+  localProducts:any= [];
+  localSizes:any= [];
+
 
   chosenInventory = new Inventory(
     0,
@@ -121,6 +127,114 @@ export class InventoryComponent {
     });
   }
 
+  getAllCalibers(): void {
+    this.localCalibers = [];
+    this.backendService.getAllCalibers().subscribe({
+      next: (data) => {
+        for (let caliber of data.body) {
+          this.localCalibers.push(
+            new Caliber(
+              caliber.caliberId,
+              caliber.caliberName
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All Calibers returned.'),
+    });
+  }
+
+  getAllCategories(): void {
+    this.localCategories = [];
+    this.backendService.getAllCategories().subscribe({
+      next: (data) => {
+        for (let category of data.body) {
+          this.localCategories.push(
+            new Category(
+              category.categoryId,
+              category.categoryName
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All categories returned.'),
+    });
+  }
+
+  getAllManufacturers(): void {
+    this.localManufacturers = [];
+    this.backendService.getAllManufactures().subscribe({
+      next: (data) => {
+        for (let manufacturer of data.body) {
+          this.localWarehouses.push(
+            new Manufacturer(
+              manufacturer.manufacturerId,
+              manufacturer.manufacturerName
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All manufactures returned.'),
+    });
+  }
+
+  getAllProducts(): void {
+    this.localProducts = [];
+    this.backendService.getAllProducts().subscribe({
+      next: (data) => {
+        for (let product of data.body) {
+          this.localProducts.push(
+            new Product(
+              product.productId,
+              product.name,
+              product.categoryId,
+              product.manufacturerId,
+              product.sizeId,
+              product.caliberId,
+              product.productDesc,
+              product.available,
+              product.imageURL,
+              product.altText
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All products returned.'),
+    });
+  }
+
+  getAllSizes(): void {
+    this.localSizes = [];
+    this.backendService.getAllSizes().subscribe({
+      next: (data) => {
+        for (let size of data.body) {
+          this.localSizes.push(
+            new Size(
+              size.sizeId,
+              size.sizeName
+            )
+          );
+        }
+      },
+      error: (errData) => {
+        console.log(errData);
+      },
+      complete: () => console.log('Complete! All sizes returned.'),
+    });
+  }
+
   deleteInventory(): void {
     console.log(this.chosenInventory);
 
@@ -129,5 +243,35 @@ export class InventoryComponent {
       .subscribe(() => this.getAllWarehouses());
 
     this.addForm.reset();
+  }
+
+  chooseInventory(inventory: Inventory) :void {
+    this.chosenInventory = inventory;
+
+    this.addForm.setValue({
+      warehouseId: String(inventory.warehouseId),
+      productId: String(inventory.productId),
+      quantity: String(inventory.quantity)
+    })
+  }
+
+  cancelUpdate(): void {
+      this.addForm.reset();
+      this.chosenInventory = new Inventory(
+        0,
+        new Warehouse(0, 0, 0),
+        new Product(
+          0,
+          '',
+          new Category(0, ''),
+          new Manufacturer(0, ''),
+          new Size(0, ''),
+          new Caliber(0, ''),
+          '',
+          0,
+          '',
+          ''),
+        0
+      );
   }
 }
