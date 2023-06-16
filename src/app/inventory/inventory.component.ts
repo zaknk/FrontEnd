@@ -18,6 +18,7 @@ import { Category } from '../models/category';
 export class InventoryComponent {
   localWarehouses: any = [];
   localInventory: any = [];
+  // chosenWarehouse: Warehouse =
 
   chosenInventory = new Inventory(
     0,

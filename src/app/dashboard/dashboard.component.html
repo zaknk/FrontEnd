@@ -1,9 +1,14 @@
 <main>
+
   <div>
-    My User Data:
-    <div *ngIf="userService.user | async as user">
+
+    <div *ngIf="userService.user | async as user; else noUser">
+      My User Data:
       Hello, {{user.userId}}
     </div>
 
   </div>
+
+  <ng-template #noUser><span>Access denied. Please log in.</span></ng-template>
+
 </main>

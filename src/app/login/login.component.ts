@@ -3,6 +3,8 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import { PermissionLevel } from '../models/permission-level';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +14,14 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent {
 
   user = new User(0, '', '', '', new PermissionLevel(0, ''));
-  isLoggedIn: boolean = false;
-  displayLogin = false;
+  public isLoggedIn: boolean = false;
+  displayLogin = true;
   errorMessage = '';
 
+  url = environment.backendURL;
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService,
+    private router: Router) {
       this.userService.user.subscribe(user => {
         this.isLoggedIn = !!user; // User is logged in if user is not null
       });
@@ -25,29 +29,24 @@ export class LoginComponent {
 
   logout(): void {
     this.userService.logout();
+    this.displayLogin = true;
+    this.router.navigate([]);
   }
 
   openLogin(): void {
     this.displayLogin = true;
   }
 
-  closeLogin(): void {
-    this.displayLogin = false;
-  }
-
   onSubmit(loginForm: NgForm): void {
     this.userService.login(this.user).subscribe({
       next: (user) => {
-        console.log('Login successful');
-        console.log(user)
-        this.closeLogin();
+        this.displayLogin = false;
         this.errorMessage = '';
         loginForm.resetForm();
       },
       error: error => {
-        console.log('Login failed');
         if (error.status === 401) {
-          this.errorMessage = 'Wrong username and/or password';
+          this.errorMessage = 'Wrong email and/or password';
         } else {
           this.errorMessage = 'An unknown error occurred';
         }

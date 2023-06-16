@@ -53,4 +53,5 @@ export class BackendService {
     return this.http.post<any>(this.url + 'warehouse/new', warehouse, { observe: 'response' });
   }
 
+
 }
