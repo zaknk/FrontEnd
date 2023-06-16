@@ -26,8 +26,8 @@
             }" (click)="chooseProduct(product)">
                 <td class="hover-cell" (click)="chooseProduct(product)">{{ product.productId }}</td>
                 <td class="hover-cell" (click)="chooseProduct(product)">{{ product.name }}</td>
-                <td>{{ product.categoryId.categoryId }}</td>
-                <td>{{ product.manufacturerId.manufacturerId }}</td>
+                <td>{{ product.categoryId.categoryName }}</td>
+                <td>{{ product.manufacturerId.manufacturerName }}</td>
                 <td>{{ product.sizeId.sizeName }}</td>
                 <td>{{ product.caliberId.caliberName }}</td>
             </tr>

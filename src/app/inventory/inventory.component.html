@@ -15,7 +15,7 @@
 
       <label for="warehouseId"></label>
       <select type="number" id="warehouseId" formControlName="warehouseId">
-              <option value="">Select A warehouse...</option>
+              <option value="">Select a warehouse...</option>
           <ng-container *ngFor="let warehouse of localWarehouses">
               <option [value]="warehouse.warehouseId">{{warehouse.warehouseId}}</option>
           </ng-container>
@@ -91,8 +91,8 @@
             }" (click)="chooseInventory(inventory)">
                 <td class="hover-cell" (click)="chooseProduct(inventory.productId)">{{ inventory.productId.productId }}</td>
                 <td class="hover-cell" (click)="chooseProduct(inventory.productId)">{{ inventory.productId.name }}</td>
-                <td>{{ inventory.productId.categoryId.categoryId }}</td>
-                <td>{{ inventory.productId.manufacturerId.manufacturerId }}</td>
+                <td>{{ inventory.productId.categoryId.categoryName }}</td>
+                <td>{{ inventory.productId.manufacturerId.manufacturerName }}</td>
                 <td>{{ inventory.productId.sizeId.sizeName }}</td>
                 <td>{{ inventory.productId.caliberId.caliberName }}</td>
                 <td>{{ inventory.quantity }}</td>
